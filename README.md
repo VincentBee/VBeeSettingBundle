@@ -1,17 +1,38 @@
 VBeeSettingBundle
 =================
 
-Introduction
-============
-
 This bundle simply allow to manage settings in your application trough the database.
-That make it more easier to manage during the application running than parameters files.
+That make it easier to manage during the application running than parameters files.
 
-Usage
-=====
+Usage in code
+=============
 
-Get the setting manager service, and call the 'get' method with the key of the setting.
+Create a new Setting
 
     <?php
-    $settingManager = $this->container->get('vbee.manager.setting');
-    $settingManager->get('toto');
+    $this->container->get('vbee.manager.setting')->create('foo', 'bar');
+
+Get a existing Setting
+
+    <?php
+    $this->container->get('vbee.manager.setting')->get('foo');
+
+Remove a Setting
+
+    <?php
+    $this->container->get('vbee.manager.setting')->remove('foo');
+
+Usage in command line
+=====================
+
+Create a new Setting
+
+    php app/console vbee:setting:create foo bar
+
+Remove a Setting
+
+    php app/console vbee:setting:remove foo bar
+
+Purge all Settings
+
+    php app/console vbee:setting:remove --all

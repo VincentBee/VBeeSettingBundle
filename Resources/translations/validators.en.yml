@@ -1,0 +1,3 @@
+setting:
+  name:
+    unique: "The setting name must be unique"

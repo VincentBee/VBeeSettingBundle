@@ -11,6 +11,7 @@
     <services>
         <service id="vbee.manager.setting" class="%vbee.manager.setting.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="validator"/>
         </service>
     </services>
 </container>
