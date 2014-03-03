@@ -1,0 +1,28 @@
+{
+    "name" : "vbee/settingbundle",
+    "description" : "A simple setting bundle for Symfony2",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "VBee",
+        "email" : "vincentb45@gmail.com"
+    }],
+    "keywords" : [
+        "setting bundle"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+    },
+    "autoload" : {
+        "psr-0" : {
+            "Company\\DemoBundle" : ""
+        }
+    },
+    "target-dir" : "VBee/SettingBundle",
+    "extra" : {
+        "branch-alias" : {
+            "dev-master" : "2.2-dev"
+        }
+    }
+}
