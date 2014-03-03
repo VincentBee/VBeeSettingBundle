@@ -6,7 +6,7 @@
 
     <entity name="VBee\SettingBundle\Entity\Setting"
             repository-class="VBee\SettingBundle\Entity\Repository\SettingRepository"
-            table="setting">
+            table="vbee_setting">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>

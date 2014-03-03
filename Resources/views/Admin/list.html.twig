@@ -1,0 +1,8 @@
+{% for setting in settings %}
+    <div>
+        <div>{{ setting.name }}</div>
+        <div>{{ setting.value }}</div>
+        <div><a href="{{ path('vbee_setting_admin_edit', {'id': setting.id}) }}">Edit</a></div>
+        <div><a href="{{ path('vbee_setting_admin_remove', {'id': setting.id}) }}">Delete</a></div>
+    </div>
+{% endfor %}

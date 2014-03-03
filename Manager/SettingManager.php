@@ -59,6 +59,15 @@ class SettingManager
         return null;
     }
 
+    public function set($name, $value)
+    {
+        $setting = $this->repository->getSettingByName($name);
+        if($setting instanceof Setting){
+            $setting->setValue($value);
+            $this->em->flush();
+        }
+    }
+
     /**
      * Create a new setting
      *

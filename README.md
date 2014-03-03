@@ -17,7 +17,11 @@ Update your vendors:
 
 app/AppKernel.php:
 
-   new VBee\SettingBundle\VBeeSettingBundle(),
+    new VBee\SettingBundle\VBeeSettingBundle(),
+
+Update the database:
+
+    php app/console doctrine:schema:update --force
 
 Usage in code
 =============
@@ -36,6 +40,11 @@ Get all Settings
 
     <?php
     $this->container->get('vbee.manager.setting')->all();
+
+Set a new value for a Setting:
+
+    <?php
+    $this->container->get('vbee.manager.setting')->set('foo', 'bar');
 
 Remove a Setting
 

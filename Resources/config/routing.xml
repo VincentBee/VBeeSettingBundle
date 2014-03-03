@@ -3,4 +3,20 @@
 <routes xmlns="http://symfony.com/schema/routing"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="vbee_setting_admin_list" path="/setting/list">
+        <default key="_controller">VBeeSettingBundle:Admin:list</default>
+    </route>
+
+    <route id="vbee_setting_admin_create" path="/setting/create">
+        <default key="_controller">VBeeSettingBundle:Admin:create</default>
+    </route>
+
+    <route id="vbee_setting_admin_edit" path="/setting/{id}/edit">
+        <default key="_controller">VBeeSettingBundle:Admin:edit</default>
+    </route>
+
+    <route id="vbee_setting_admin_remove" path="/setting/{id}/remove">
+        <default key="_controller">VBeeSettingBundle:Admin:remove</default>
+    </route>
 </routes>
