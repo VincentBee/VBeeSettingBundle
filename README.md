@@ -4,6 +4,21 @@ VBeeSettingBundle
 This bundle simply allow to manage settings in your application trough the database.
 That make it easier to manage during the application running than parameters files.
 
+Installation
+============
+
+Composer.json:
+
+    "vbee/settingbundle": "dev-master"
+
+Update your vendors:
+
+    php composer.phar update vbee/settingbundle
+
+app/AppKernel.php:
+
+   new VBee\SettingBundle\VBeeSettingBundle(),
+
 Usage in code
 =============
 
