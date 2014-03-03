@@ -19,7 +19,7 @@ class SettingManager
     protected $repository;
 
     /**
-     * @var
+     * @var \Symfony\Component\Validator\Validator
      */
     protected $validator;
 
@@ -35,6 +35,18 @@ class SettingManager
     }
 
     /**
+     * Return all settings
+     *
+     * @return array|\VBee\SettingBundle\Entity\Setting[]
+     */
+    public function all()
+    {
+        return $this->repository->findAll();
+    }
+
+    /**
+     * Get a setting with his name
+     *
      * @param String $name
      * @return mixed
      */
@@ -48,6 +60,8 @@ class SettingManager
     }
 
     /**
+     * Create a new setting
+     *
      * @param $name
      * @param string $value
      * @return null|Setting
@@ -71,6 +85,8 @@ class SettingManager
     }
 
     /**
+     * Remove a selected setting from database
+     *
      * @param $name
      * @throws \Exception
      */
@@ -87,7 +103,7 @@ class SettingManager
     }
 
     /**
-     *
+     * Remove all setting from database
      */
     public function purge()
     {

@@ -17,6 +17,11 @@ Get a existing Setting
     <?php
     $this->container->get('vbee.manager.setting')->get('foo');
 
+Get all Settings
+
+    <?php
+    $this->container->get('vbee.manager.setting')->all();
+
 Remove a Setting
 
     <?php
