@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Setting
 {
+    const SETTING_VERSION_LATEST = 'latest';
+
     /**
      * @var integer
      */
@@ -24,6 +26,10 @@ class Setting
      */
     protected $value;
 
+    /**
+     * @var integer
+     */
+    protected $version;
 
     /**
      * Get id
@@ -74,10 +80,33 @@ class Setting
     /**
      * Get value
      *
-     * @return string 
+     * @return string
      */
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * Set version
+     *
+     * @param integer $version
+     * @return Setting
+     */
+    public function setVersion($version)
+    {
+        $this->version = $version;
+
+        return $this;
+    }
+
+    /**
+     * Get version
+     *
+     * @return integer
+     */
+    public function getVersion()
+    {
+        return $this->version;
     }
 }

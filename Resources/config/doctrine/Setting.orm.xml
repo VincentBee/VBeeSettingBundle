@@ -16,6 +16,8 @@
 
         <field name="value" type="string" column="value"/>
 
+        <field name="version" type="integer" column="version"/>
+
     </entity>
 
 </doctrine-mapping>

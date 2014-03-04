@@ -2,20 +2,27 @@
 
 namespace VBee\SettingBundle\Twig;
 
+use VBee\SettingBundle\Entity\Setting;
 use VBee\SettingBundle\Manager\SettingManager;
 
 class SettingExtension extends \Twig_Extension
 {
     /**
-     * @var \VBee\SettingBundle\Manager\SettingManager
+     * @var SettingManager
      */
     protected $manager;
 
+    /**
+     * @param SettingManager $manager
+     */
     public function __construct(SettingManager $manager)
     {
         $this->manager = $manager;
     }
 
+    /**
+     * @return array
+     */
     public function getFunctions()
     {
         return array(
@@ -23,16 +30,28 @@ class SettingExtension extends \Twig_Extension
         );
     }
 
+    /**
+     * @return array
+     */
     public function getFilters()
     {
         return array();
     }
 
-    public function getSetting($name)
+    /**
+     * @param $name
+     * @param null $default
+     * @param string $version
+     * @return null|string
+     */
+    public function getSetting($name, $default = null, $version = Setting::SETTING_VERSION_LATEST)
     {
-        return $this->manager->get($name);
+        return $this->manager->get($name, $default, $version);
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'setting_extension';

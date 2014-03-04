@@ -47,10 +47,12 @@ class SettingManager
     /**
      * Get a setting with his name
      *
-     * @param String $name
-     * @return mixed
+     * @param $name
+     * @param null $default
+     * @param string $version
+     * @return null|string
      */
-    public function get($name)
+    public function get($name, $default = null, $version = Setting::SETTING_VERSION_LATEST)
     {
         $setting = $this->repository->getSettingByName($name);
         if($setting instanceof Setting){
