@@ -1,3 +1,2 @@
 setting:
-  name:
-    unique: "The setting name must be unique"
+  name_unique: "The setting name must be unique"

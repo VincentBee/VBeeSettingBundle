@@ -23,6 +23,17 @@ Update the database:
 
     php app/console doctrine:schema:update --force
 
+Update route for access to the html interface:
+
+    #app/routing.yml:
+    v_bee_setting:
+        resource: "@VBeeSettingBundle/Resources/config/routing.xml"
+        prefix:   /setting
+
+Import css:
+
+    <link rel="stylesheet" href="{{ asset('bundles/vbeesetting/css/bootstrap.min.css') }}" type="text/css" media="all" />
+
 Usage in code
 =============
 

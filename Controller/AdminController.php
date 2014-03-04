@@ -18,12 +18,49 @@ class AdminController extends Controller
 
     public function createAction(Request $request)
     {
-        return $this->render('VBeeSettingBundle:Admin:create.html.twig', array());
+        $setting = new Setting();
+
+        $formType = $this->get('vbee.form.setting');
+        $form = $this->createForm($formType, $setting);
+
+        if($request->getMethod() === 'POST'){
+            $form->handleRequest($request);
+            if($form->isValid()){
+                $em = $this->getDoctrine()->getManager();
+
+                $em->persist($setting);
+                $em->flush();
+                return $this->redirect($this->generateUrl('vbee_setting_admin_list'));
+            }
+        }
+
+        return $this->render('VBeeSettingBundle:Admin:form.html.twig', array(
+            'form' => $form->createView(),
+            'submit_path' => $this->generateUrl('vbee_setting_admin_create')
+        ));
     }
 
     public function editAction(Request $request, $id)
     {
-        return $this->render('VBeeSettingBundle:Admin:create.html.twig', array());
+        $setting = $this->getDoctrine()->getRepository('VBeeSettingBundle:Setting')->find($id);
+
+        $formType = $this->get('vbee.form.setting');
+        $form = $this->createForm($formType, $setting);
+
+        if($request->getMethod() === 'POST'){
+            $form->handleRequest($request);
+            if($form->isValid()){
+                $em = $this->getDoctrine()->getManager();
+
+                $em->flush();
+                return $this->redirect($this->generateUrl('vbee_setting_admin_list'));
+            }
+        }
+
+        return $this->render('VBeeSettingBundle:Admin:form.html.twig', array(
+            'form' => $form->createView(),
+            'submit_path' => $this->generateUrl('vbee_setting_admin_edit', array('id' => $id))
+        ));
     }
 
     public function removeAction(Request $request, $id)

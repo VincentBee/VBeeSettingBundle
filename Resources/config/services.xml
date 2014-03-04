@@ -6,12 +6,18 @@
 
     <parameters>
         <parameter key="vbee.manager.setting.class">VBee\SettingBundle\Manager\SettingManager</parameter>
+        <parameter key="vbee.form.setting.class">VBee\SettingBundle\Form\Type\SettingType</parameter>
     </parameters>
 
     <services>
+
         <service id="vbee.manager.setting" class="%vbee.manager.setting.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument type="service" id="validator"/>
         </service>
+
+        <service id="vbee.form.setting" class="%vbee.form.setting.class%">
+        </service>
+
     </services>
 </container>

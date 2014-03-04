@@ -1,8 +1,27 @@
-{% for setting in settings %}
-    <div>
-        <div>{{ setting.name }}</div>
-        <div>{{ setting.value }}</div>
-        <div><a href="{{ path('vbee_setting_admin_edit', {'id': setting.id}) }}">Edit</a></div>
-        <div><a href="{{ path('vbee_setting_admin_remove', {'id': setting.id}) }}">Delete</a></div>
+{% extends 'VBeeSettingBundle::layout.html.twig' %}
+
+{% block vbee_content %}
+    <div class="container">
+
+        <div class="page-header">
+            <h1>{{ 'setting_list.title'|trans({}, 'VBeeSettingBundle') }}</h1>
+        </div>
+
+        <p>
+            <a class="btn btn-primary btn-small " href="{{ path('vbee_setting_admin_create') }}">
+                {{ 'setting_list.create'|trans({}, 'VBeeSettingBundle') }}
+            </a>
+        </p>
+        <table class="table table-hover">
+            {% for setting in settings %}
+                <tr>
+                    <td>{{ setting.name }}</td>
+                    <td>{{ setting.value }}</td>
+                    <td><a href="{{ path('vbee_setting_admin_edit', {'id': setting.id}) }}">{{ 'setting_list.edit'|trans({}, 'VBeeSettingBundle') }}</a></td>
+                    <td><a href="{{ path('vbee_setting_admin_remove', {'id': setting.id}) }}">{{ 'setting_list.delete'|trans({}, 'VBeeSettingBundle') }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+
     </div>
-{% endfor %}
+{% endblock %}

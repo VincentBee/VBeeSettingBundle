@@ -1,0 +1,11 @@
+setting_list:
+  title: "List of Settings"
+  create: "Create"
+  edit: "Edit"
+  delete: "Delete"
+setting_form:
+  title: "Setting"
+  name: "Name"
+  value: "Value"
+  back: "Back"
+  submit: "Submit"
