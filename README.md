@@ -39,28 +39,30 @@ Usage in code
 
 Create a new Setting
 
-    <?php
     $this->container->get('vbee.manager.setting')->create('foo', 'bar');
 
 Get a existing Setting
 
-    <?php
     $this->container->get('vbee.manager.setting')->get('foo');
 
 Get all Settings
 
-    <?php
     $this->container->get('vbee.manager.setting')->all();
 
 Set a new value for a Setting:
 
-    <?php
     $this->container->get('vbee.manager.setting')->set('foo', 'bar');
 
 Remove a Setting
 
-    <?php
     $this->container->get('vbee.manager.setting')->remove('foo');
+
+Usage in Twig
+=============
+
+Get a existing Setting
+
+    {{ getSetting('foo') }}
 
 Usage in command line
 =====================
