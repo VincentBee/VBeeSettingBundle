@@ -25,7 +25,10 @@ class SettingController extends Controller
         if($request->getMethod() === 'POST'){
             $form->handleRequest($request);
             if($form->isValid()){
-                $this->get('vbee.manager.setting')->create($setting);
+                $this->get('vbee.manager.setting')->create(
+                    $setting->getName(),
+                    $setting->getValue()
+                );
                 return $this->redirect($this->generateUrl('vbee_setting_setting_list'));
             }
         }
@@ -39,16 +42,16 @@ class SettingController extends Controller
     public function editAction(Request $request, $id)
     {
         $setting = $this->getDoctrine()->getRepository('VBeeSettingBundle:Setting')->find($id);
-
         $formType = $this->get('vbee.form.setting');
         $form = $this->createForm($formType, $setting);
 
         if($request->getMethod() === 'POST'){
             $form->handleRequest($request);
             if($form->isValid()){
-                $em = $this->getDoctrine()->getManager();
-
-                $em->flush();
+                $this->get('vbee.manager.setting')->set(
+                    $setting->getName(),
+                    $setting->getValue()
+                );
                 return $this->redirect($this->generateUrl('vbee_setting_setting_list'));
             }
         }
@@ -63,9 +66,9 @@ class SettingController extends Controller
     {
         $setting = $this->getDoctrine()->getRepository('VBeeSettingBundle:Setting')->find($id);
         if($setting instanceof Setting){
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($setting);
-            $em->flush();
+            $this->get('vbee.manager.setting')->remove(
+                $setting->getName()
+            );
         }
         return $this->redirect($this->generateUrl('vbee_setting_setting_list'));
     }

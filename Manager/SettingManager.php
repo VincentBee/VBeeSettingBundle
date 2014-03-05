@@ -73,12 +73,17 @@ class SettingManager
     }
 
     /**
-     * @param Setting $setting
+     * @param $name
+     * @param string $value
      * @return Setting
      * @throws \Exception
      */
-    public function create(Setting $setting)
+    public function create($name, $value = '')
     {
+        $setting = new Setting();
+        $setting->setName($name);
+        $setting->setValue($value);
+
         $errors = $this->validator->validate($setting);
         if($errors->count() > 0){
             throw new \Exception('Invalid Setting, check at constraints validation');

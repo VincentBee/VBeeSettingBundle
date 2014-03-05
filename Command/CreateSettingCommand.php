@@ -26,10 +26,9 @@ class CreateSettingCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $setting = new Setting();
-        $setting->setName($input->getArgument(self::CREATE_SETTING_NAME_ARG));
-        $setting->setValue($input->getArgument(self::CREATE_SETTING_VALUE_ARG));
-
-        $this->getContainer()->get('vbee.manager.setting')->create($setting);
+        $this->getContainer()->get('vbee.manager.setting')->create(
+            $input->getArgument(self::CREATE_SETTING_NAME_ARG),
+            $input->getArgument(self::CREATE_SETTING_VALUE_ARG)
+        );
     }
 }
