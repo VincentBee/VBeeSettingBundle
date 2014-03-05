@@ -35,32 +35,34 @@ class SettingManager
     }
 
     /**
-     * Return all settings
-     *
      * @return array|\VBee\SettingBundle\Entity\Setting[]
      */
     public function all()
     {
-        return $this->repository->findAll();
+        return $this->repository->getSettings();
     }
 
     /**
-     * Get a setting with his name
-     *
      * @param $name
      * @param null $default
-     * @param string $version
      * @return null|string
      */
-    public function get($name, $default = null, $version = Setting::SETTING_VERSION_LATEST)
+    public function get($name, $default = null)
     {
         $setting = $this->repository->getSettingByName($name);
         if($setting instanceof Setting){
-            return $setting->getValue();
+            $value = $setting->getValue();
+            if($value == null){
+                return $value;
+            }
         }
-        return null;
+        return $default;
     }
 
+    /**
+     * @param $name
+     * @param $value
+     */
     public function set($name, $value)
     {
         $setting = $this->repository->getSettingByName($name);
@@ -71,19 +73,12 @@ class SettingManager
     }
 
     /**
-     * Create a new setting
-     *
-     * @param $name
-     * @param string $value
-     * @return null|Setting
+     * @param Setting $setting
+     * @return Setting
      * @throws \Exception
      */
-    public function create($name, $value = '')
+    public function create(Setting $setting)
     {
-        $setting = new Setting();
-        $setting->setName($name);
-        $setting->setValue($value);
-
         $errors = $this->validator->validate($setting);
         if($errors->count() > 0){
             throw new \Exception('Invalid Setting, check at constraints validation');

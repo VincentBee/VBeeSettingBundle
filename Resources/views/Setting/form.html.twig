@@ -1,0 +1,27 @@
+{% extends 'VBeeSettingBundle::layout.html.twig' %}
+
+{% block vbee_content %}
+    <div class="container">
+
+        <div class="page-header">
+            <h1>{{ 'setting_form.title'|trans({}, 'VBeeSettingBundle') }}</h1>
+        </div>
+
+        <form action="{{ submit_path }}" method="post">
+            <div>
+                {{ form_errors(form.name) }}
+                {{ form_widget(form.name) }}
+            </div>
+            <div>
+                {{ form_errors(form.value) }}
+                {{ form_widget(form.value) }}
+            </div>
+
+            {{ form_widget(form._token) }}
+
+            <a class="btn btn-danger btn-small" href="{{ path('vbee_setting_setting_list') }}">{{ 'setting_form.back'|trans({}, 'VBeeSettingBundle') }}</a>
+            <input type="submit" class="btn btn-success btn-small" value="{{ 'setting_form.submit'|trans({}, 'VBeeSettingBundle') }}" />
+        </form>
+
+    </div>
+{% endblock %}

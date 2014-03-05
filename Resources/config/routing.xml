@@ -4,19 +4,21 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="vbee_setting_admin_list" path="/list">
-        <default key="_controller">VBeeSettingBundle:Admin:list</default>
+    <route id="vbee_setting_setting_list" path="/list">
+        <default key="_controller">VBeeSettingBundle:Setting:list</default>
+        <default key="version">latest</default>
     </route>
 
-    <route id="vbee_setting_admin_create" path="/create">
-        <default key="_controller">VBeeSettingBundle:Admin:create</default>
+    <route id="vbee_setting_setting_create" path="/create">
+        <default key="_controller">VBeeSettingBundle:Setting:create</default>
+        <default key="version">latest</default>
     </route>
 
-    <route id="vbee_setting_admin_edit" path="/{id}/edit">
-        <default key="_controller">VBeeSettingBundle:Admin:edit</default>
+    <route id="vbee_setting_setting_edit" path="/{id}/edit">
+        <default key="_controller">VBeeSettingBundle:Setting:edit</default>
     </route>
 
-    <route id="vbee_setting_admin_remove" path="/{id}/remove">
-        <default key="_controller">VBeeSettingBundle:Admin:remove</default>
+    <route id="vbee_setting_setting_remove" path="/{id}/remove">
+        <default key="_controller">VBeeSettingBundle:Setting:remove</default>
     </route>
 </routes>

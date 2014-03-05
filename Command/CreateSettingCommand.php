@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use VBee\SettingBundle\Entity\Setting;
 
 class CreateSettingCommand extends ContainerAwareCommand
 {
@@ -25,9 +26,10 @@ class CreateSettingCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->getContainer()->get('vbee.manager.setting')->create(
-            $input->getArgument(self::CREATE_SETTING_NAME_ARG),
-            $input->getArgument(self::CREATE_SETTING_VALUE_ARG)
-        );
+        $setting = new Setting();
+        $setting->setName($input->getArgument(self::CREATE_SETTING_NAME_ARG));
+        $setting->setValue($input->getArgument(self::CREATE_SETTING_VALUE_ARG));
+
+        $this->getContainer()->get('vbee.manager.setting')->create($setting);
     }
 }
