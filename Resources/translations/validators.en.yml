@@ -1,2 +1,4 @@
 setting:
   name_unique: "The setting name must be unique"
+  type_valid: "The setting type must be valid"
+  value_valid: "The value must be of type %type%"

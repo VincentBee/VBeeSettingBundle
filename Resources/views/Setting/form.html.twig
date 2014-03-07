@@ -13,6 +13,10 @@
                 {{ form_widget(form.name) }}
             </div>
             <div>
+                {{ form_errors(form.type) }}
+                {{ form_widget(form.type) }}
+            </div>
+            <div>
                 {{ form_errors(form.value) }}
                 {{ form_widget(form.value) }}
             </div>

@@ -10,3 +10,6 @@ setting_form:
   value: "Value"
   back: "Back"
   submit: "Submit"
+setting_type:
+  string: "String"
+  integer: "Integer"

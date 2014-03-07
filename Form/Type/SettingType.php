@@ -5,6 +5,7 @@ namespace VBee\SettingBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use VBee\SettingBundle\Entity\Enum\SettingTypeEnum;
 
 class SettingType extends AbstractType {
 
@@ -16,6 +17,10 @@ class SettingType extends AbstractType {
                     'placeholder' => 'setting_form.name',
                 ))
             )
+            ->add('type', 'choice', array(
+                'translation_domain' => 'VBeeSettingBundle',
+                'choices' => SettingTypeEnum::getSettingTypes()
+            ))
             ->add('value', null, array(
                 'translation_domain' => 'VBeeSettingBundle',
                 'attr' => array(

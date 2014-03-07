@@ -11,8 +11,24 @@
             <option name="message">setting.name_unique</option>
         </constraint>
 
+        <constraint name="Callback">
+            <option name="methods">
+                <value>isDataValid</value>
+            </option>
+        </constraint>
+
         <property name="name">
-            <constraint name="NotNull"></constraint>
+            <constraint name="NotNull" />
+        </property>
+
+        <property name="type">
+            <constraint name="Choice">
+                <option name="choices">
+                    <value>str</value>
+                    <value>int</value>
+                </option>
+                <option name="message">setting.type_valid</option>
+            </constraint>
         </property>
     </class>
 

@@ -4,6 +4,7 @@ namespace VBee\SettingBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Validator\Validator;
+use VBee\SettingBundle\Entity\Enum\SettingTypeEnum;
 use VBee\SettingBundle\Entity\Setting;
 
 class SettingManager
@@ -62,26 +63,39 @@ class SettingManager
     /**
      * @param $name
      * @param $value
+     * @param null $type
+     * @throws \Exception
      */
-    public function set($name, $value)
+    public function set($name, $value, $type = null)
     {
         $setting = $this->repository->getSettingByName($name);
         if($setting instanceof Setting){
+            if($type != null){
+                $setting->setType($type);
+            }
             $setting->setValue($value);
+
+            $errors = $this->validator->validate($setting);
+            if($errors->count() > 0){
+                throw new \Exception('Invalid Setting, check at constraints validation');
+            }
+
             $this->em->flush();
         }
     }
 
     /**
      * @param $name
+     * @param $type
      * @param string $value
      * @return Setting
      * @throws \Exception
      */
-    public function create($name, $value = '')
+    public function create($name, $value = '', $type = SettingTypeEnum::STRING)
     {
         $setting = new Setting();
         $setting->setName($name);
+        $setting->setType($type);
         $setting->setValue($value);
 
         $errors = $this->validator->validate($setting);

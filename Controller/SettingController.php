@@ -25,10 +25,8 @@ class SettingController extends Controller
         if($request->getMethod() === 'POST'){
             $form->handleRequest($request);
             if($form->isValid()){
-                $this->get('vbee.manager.setting')->create(
-                    $setting->getName(),
-                    $setting->getValue()
-                );
+                $this->getDoctrine()->getManager()->persist($setting);
+                $this->getDoctrine()->getManager()->flush();
                 return $this->redirect($this->generateUrl('vbee_setting_setting_list'));
             }
         }
@@ -47,11 +45,9 @@ class SettingController extends Controller
 
         if($request->getMethod() === 'POST'){
             $form->handleRequest($request);
+
             if($form->isValid()){
-                $this->get('vbee.manager.setting')->set(
-                    $setting->getName(),
-                    $setting->getValue()
-                );
+                $this->getDoctrine()->getManager()->flush();
                 return $this->redirect($this->generateUrl('vbee_setting_setting_list'));
             }
         }
