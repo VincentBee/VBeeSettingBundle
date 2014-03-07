@@ -39,7 +39,10 @@ Usage in code
 
 Create a new Setting
 
-    $this->container->get('vbee.manager.setting')->create('foo', 'bar');
+    $this->container->get('vbee.manager.setting')->create('foo', 'bar'); // default type = 'str'
+    $this->container->get('vbee.manager.setting')->create('foo', 'bar', 'str');
+    $this->container->get('vbee.manager.setting')->create('foo', '123', 'int');
+    // ... check all available types
 
 Get a existing Setting
 
@@ -52,6 +55,9 @@ Get all Settings
 Set a new value for a Setting:
 
     $this->container->get('vbee.manager.setting')->set('foo', 'bar');
+    $this->container->get('vbee.manager.setting')->set('foo', 'bar', 'str');
+    $this->container->get('vbee.manager.setting')->set('foo', '123', 'int');
+    // ... check all available types
 
 Remove a Setting
 
@@ -78,3 +84,16 @@ Remove a Setting
 Purge all Settings
 
     php app/console vbee:setting:remove --all
+
+Value Types
+===========
+
+VBeeSetting bundle allow you to make validation on your setting value dynamically.
+
+By Default, these types are available:
+
+Type | In DB | In Code
+--- | --- | ---
+String | 'str' | \VBeeSettingBundle\Entity\Enum\SettingTypeEnum::STRING
+Integer | 'int' | \VBeeSettingBundle\Entity\Enum\SettingTypeEnum::INTEGER
+
