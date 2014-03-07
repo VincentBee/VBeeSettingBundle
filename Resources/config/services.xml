@@ -8,6 +8,9 @@
         <parameter key="vbee.manager.setting.class">VBee\SettingBundle\Manager\SettingManager</parameter>
         <parameter key="vbee.form.setting.class">VBee\SettingBundle\Form\Type\SettingType</parameter>
         <parameter key="vbee.twig.setting.class">VBee\SettingBundle\Twig\SettingExtension</parameter>
+        <parameter key="vbee.validator.setting_value.class">VBee\SettingBundle\Validator\Constraints\SettingValueValidator</parameter>
+        <parameter key="vbee.validator.string.class">VBee\SettingBundle\Validator\Constraints\StringValidator</parameter>
+        <parameter key="vbee.validator.integer.class">VBee\SettingBundle\Validator\Constraints\IntegerValidator</parameter>
     </parameters>
 
     <services>
@@ -25,5 +28,16 @@
             <argument type="service" id="vbee.manager.setting"/>
         </service>
 
+        <service id="vbee.validator.string" class="%vbee.validator.string.class%">
+            <tag name="vbee.setting_value_validator"/>
+        </service>
+
+        <service id="vbee.validator.integer" class="%vbee.validator.integer.class%">
+            <tag name="vbee.setting_value_validator"/>
+        </service>
+
+        <service id="vbee.validator.setting_value" class="%vbee.validator.setting_value.class%">
+            <tag name="validator.constraint_validator" alias="setting_value" />
+        </service>
     </services>
 </container>

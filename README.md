@@ -94,6 +94,6 @@ By Default, these types are available:
 
 Type | In DB | In Code
 --- | --- | ---
-String | 'str' | `\VBee\SettingBundle\Entity\Enum\SettingTypeEnum::STRING`
-Integer | 'int' | `\VBee\SettingBundle\Entity\Enum\SettingTypeEnum::INTEGER`
+String | str | `\VBee\SettingBundle\Entity\Enum\SettingTypeEnum::STRING`
+Integer | int | `\VBee\SettingBundle\Entity\Enum\SettingTypeEnum::INTEGER`
 

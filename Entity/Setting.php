@@ -31,21 +31,6 @@ class Setting
      */
     protected $value;
 
-
-    public function isDataValid(ExecutionContextInterface $context)
-    {
-        $check = '/^(.+)$/';
-        switch($this->type){
-            case SettingTypeEnum::INTEGER:
-                $check = '/^(\d+)$/';
-        }
-        $matches = array();
-        preg_match($check, $this->value, $matches);
-        if (!isset($matches[0])) {
-            $context->addViolationAt('value', 'setting.value_valid', array('%type%' => $this->type), null);
-        }
-    }
-
     /**
      * Get id
      *

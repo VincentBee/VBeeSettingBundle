@@ -11,11 +11,7 @@
             <option name="message">setting.name_unique</option>
         </constraint>
 
-        <constraint name="Callback">
-            <option name="methods">
-                <value>isDataValid</value>
-            </option>
-        </constraint>
+        <constraint name="VBee\SettingBundle\Validator\SettingValue" />
 
         <property name="name">
             <constraint name="NotNull" />
