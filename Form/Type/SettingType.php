@@ -9,6 +9,13 @@ use VBee\SettingBundle\Entity\Enum\SettingTypeEnum;
 
 class SettingType extends AbstractType {
 
+    protected $types;
+
+    public function __construct(array $types)
+    {
+        $this->types = $types;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('name', null, array(
@@ -19,7 +26,7 @@ class SettingType extends AbstractType {
             )
             ->add('type', 'choice', array(
                 'translation_domain' => 'VBeeSettingBundle',
-                'choices' => SettingTypeEnum::getSettingTypes()
+                'choices' => $this->types
             ))
             ->add('value', null, array(
                 'translation_domain' => 'VBeeSettingBundle',

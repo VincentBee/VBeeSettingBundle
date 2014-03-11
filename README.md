@@ -97,3 +97,56 @@ Type | In DB | In Code
 String | str | `\VBee\SettingBundle\Entity\Enum\SettingTypeEnum::STRING`
 Integer | int | `\VBee\SettingBundle\Entity\Enum\SettingTypeEnum::INTEGER`
 
+Add a Type
+==========
+
+Declare your type
+-----------------
+
+your first have to declare your new type as:
+
+    # app/config/config.yml
+    v_bee_setting:
+        types:
+            your: { label: setting_type.your }
+
+you can use translation file for translate the label
+
+    # src/Acme/DemoBundle/Resources/translations/VBeeSettingBundle.[locale].yml
+    setting_type:
+        your: "Your"
+
+Create your validator
+---------------------
+
+then you need to make your custom type validator
+
+    <?php
+    namespace Acme\DemoBundle\Validator\Constraints;
+
+    use VBee\SettingBundle\Validator\Constraints\SettingValueValidatorInterface;
+
+    class YourValidator implements SettingValueValidatorInterface
+    {
+        /**
+         * @param $value
+         * @return bool
+         */
+        public function validate($value)
+        {
+            $matches = array(); preg_match('/^your(.+)$/', $value, $matches);
+            if (isset($matches[0])) { return true; }
+            return false;
+        }
+
+        public function getName()
+        {
+            return 'your';
+        }
+    }
+
+finally, register it as service tagged by `vbee.setting_value_validator`
+
+    <service id="acme.validator.your" class="Acme\DemoBundle\Validator\Constraints\YourValidator">
+        <tag name="vbee.setting_value_validator"/>
+    </service>

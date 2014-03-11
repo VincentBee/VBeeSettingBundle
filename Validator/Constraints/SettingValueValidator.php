@@ -13,6 +13,13 @@ class SettingValueValidator extends ConstraintValidator
      */
     protected $validators;
 
+    protected $types;
+
+    public function __construct($types)
+    {
+        $this->types = $types;
+    }
+
     /**
      * @param $validator
      */
@@ -31,6 +38,11 @@ class SettingValueValidator extends ConstraintValidator
         if(!$setting instanceof Setting){
             return;
         }
+
+        if(!in_array($setting->getType(), $this->types)){
+            $this->context->addViolationAt('type', 'setting.type_valid', array(), null);
+        }
+
         if(isset($this->validators[$setting->getType()])){
             $validator = $this->validators[$setting->getType()];
             if(!$validator->validate($setting->getValue())){

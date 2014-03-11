@@ -14,7 +14,7 @@
 
         <field name="name" type="string" column="name" length="255"/>
 
-        <field name="type" type="string" column="type" length="3"/>
+        <field name="type" type="string" column="type" length="255"/>
 
         <field name="value" type="string" column="value"/>
 

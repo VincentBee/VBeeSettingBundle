@@ -21,6 +21,7 @@
         </service>
 
         <service id="vbee.form.setting" class="%vbee.form.setting.class%">
+            <argument>%setting_types_select%</argument>
         </service>
 
         <service id="vbee.twig.setting" class="%vbee.twig.setting.class%">
@@ -38,6 +39,7 @@
 
         <service id="vbee.validator.setting_value" class="%vbee.validator.setting_value.class%">
             <tag name="validator.constraint_validator" alias="setting_value" />
+            <argument>%setting_types_valid%</argument>
         </service>
     </services>
 </container>
