@@ -27,8 +27,12 @@ Update route for access to the html interface:
 
     #app/routing.yml:
     v_bee_setting:
-        resource: "@VBeeSettingBundle/Resources/config/routing.xml"
+        resource: "@VBeeSettingBundle/Resources/config/route/routing.xml"
         prefix:   /setting
+
+    v_bee_setting_api:
+        resource: "@VBeeSettingBundle/Resources/config/route/api.xml"
+        prefix:   /api
 
 Import css:
 
@@ -94,8 +98,8 @@ By Default, these types are available:
 
 Type | In DB | In Code
 --- | --- | ---
-String | str | `\VBee\SettingBundle\Entity\Enum\SettingTypeEnum::STRING`
-Integer | int | `\VBee\SettingBundle\Entity\Enum\SettingTypeEnum::INTEGER`
+String | str | `VBee\SettingBundle\Entity\Enum\SettingTypeEnum::STRING`
+Integer | int | `VBee\SettingBundle\Entity\Enum\SettingTypeEnum::INTEGER`
 
 Add a Type
 ==========
@@ -150,3 +154,22 @@ finally, register it as service tagged by `vbee.setting_value_validator`
     <service id="acme.validator.your" class="Acme\DemoBundle\Validator\Constraints\YourValidator">
         <tag name="vbee.setting_value_validator"/>
     </service>
+
+APIs
+====
+
+list setting
+------------
+
+    GET: /api/setting
+    {
+        "status": {
+            "code": 200,
+            "message": "OK"
+        },
+        "response": {
+            "settings": {
+                "foo": "bar",
+            }
+        }
+    }
