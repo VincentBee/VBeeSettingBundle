@@ -53,7 +53,7 @@ class SettingManager
         $setting = $this->repository->getSettingByName($name);
         if($setting instanceof Setting){
             $value = $setting->getValue();
-            if($value == null){
+            if($value != null){
                 return $value;
             }
         }
