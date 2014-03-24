@@ -51,6 +51,8 @@ Create a new Setting
 Get a existing Setting
 
     $this->container->get('vbee.manager.setting')->get('foo');
+    // or
+    $this->container->getParameter('foo');
 
 Get all Settings
 
