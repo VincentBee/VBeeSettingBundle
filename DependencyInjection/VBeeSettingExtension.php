@@ -46,7 +46,7 @@ class VBeeSettingExtension extends Extension
                 $typesValid[] = $name;
             }
         }
-        $container->setParameter('setting_types_select', $typesForm);
-        $container->setParameter('setting_types_valid', $typesValid);
+        $container->setParameter('vbee.setting_types_select', $typesForm);
+        $container->setParameter('vbee.setting_types_valid', $typesValid);
     }
 }

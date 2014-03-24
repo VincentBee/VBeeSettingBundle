@@ -41,12 +41,11 @@ class SettingExtension extends \Twig_Extension
     /**
      * @param $name
      * @param null $default
-     * @param string $version
      * @return null|string
      */
-    public function getSetting($name, $default = null, $version = Setting::SETTING_VERSION_LATEST)
+    public function getSetting($name, $default = null)
     {
-        return $this->manager->get($name, $default, $version);
+        return $this->manager->get($name, $default);
     }
 
     /**
