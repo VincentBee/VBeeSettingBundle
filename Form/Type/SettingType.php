@@ -25,6 +25,13 @@ class SettingType extends AbstractType {
                     'placeholder' => 'setting_form.name',
                 ))
             )
+            ->add('description', null, array(
+                'required' => false,
+                'translation_domain' => 'VBeeSettingBundle',
+                'attr' => array(
+                    'placeholder' => 'setting_form.description',
+                ))
+            )
             ->add('type', 'choice', array(
                 'translation_domain' => 'VBeeSettingBundle',
                 'choices' => $this->types

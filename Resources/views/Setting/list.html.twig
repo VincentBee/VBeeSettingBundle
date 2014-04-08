@@ -14,10 +14,17 @@
         </p>
 
         <table class="table table-hover">
+            <tr>
+                <th style="width: 10%;">Name</th>
+                <th style="width: 40%;">Description</th>
+                <th style="width: 37%;">Value</th>
+                <th style="width: 13%; text-align: center">Actions</th>
+            </tr>
             {% for setting in settings %}
                 <tr>
-                    <td style="width: 20%;">{{ setting.name }}</td>
-                    <td style="width: 60%;">{{ setting.value }}</td>
+                    <td style="width: 10%;">{{ setting.name }}</td>
+                    <td style="width: 40%;">{{ setting.description|nl2br }}</td>
+                    <td style="width: 30%;">{{ setting.value }}</td>
                     <td style="width: 20%; text-align: right">
                         <a class="btn btn-primary btn-small" href="{{ path('vbee_setting_setting_edit', {'id': setting.id}) }}">
                             {{ 'setting_list.edit'|trans({}, 'VBeeSettingBundle') }}

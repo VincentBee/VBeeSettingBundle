@@ -7,6 +7,7 @@ setting_list:
 setting_form:
   title: "Setting"
   name: "Name"
+  description: "Description"
   value: "Value"
   back: "Back"
   submit: "Submit"

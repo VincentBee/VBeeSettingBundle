@@ -24,6 +24,11 @@ class Setting
     /**
      * @var string
      */
+    protected $description;
+
+    /**
+     * @var string
+     */
     protected $type;
 
     /**
@@ -57,11 +62,34 @@ class Setting
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Setting
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
