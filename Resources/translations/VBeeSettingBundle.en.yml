@@ -13,3 +13,4 @@ setting_form:
 setting_type:
   string: "String"
   integer: "Integer"
+  date: "Date"

@@ -19,6 +19,7 @@ class SettingType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('name', null, array(
+                'required' => false,
                 'translation_domain' => 'VBeeSettingBundle',
                 'attr' => array(
                     'placeholder' => 'setting_form.name',
@@ -29,6 +30,7 @@ class SettingType extends AbstractType {
                 'choices' => $this->types
             ))
             ->add('value', null, array(
+                'required' => false,
                 'translation_domain' => 'VBeeSettingBundle',
                 'attr' => array(
                     'placeholder' => 'setting_form.value',

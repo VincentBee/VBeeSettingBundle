@@ -38,6 +38,10 @@ Import css:
 
     <link rel="stylesheet" href="{{ asset('bundles/vbeesetting/css/bootstrap.min.css') }}" type="text/css" media="all" />
 
+Install assets:
+
+    php app/console asset:install
+
 Usage in code
 =============
 

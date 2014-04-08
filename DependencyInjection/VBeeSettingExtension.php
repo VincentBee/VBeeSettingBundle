@@ -35,6 +35,10 @@ class VBeeSettingExtension extends Extension
             'int' => array(
                 'label' => 'setting_type.integer',
                 'enable' => true
+            ),
+            'date' => array(
+                'label' => 'setting_type.date',
+                'enable' => true
             )
         ), $config['types']);
 
