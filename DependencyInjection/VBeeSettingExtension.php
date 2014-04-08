@@ -39,6 +39,14 @@ class VBeeSettingExtension extends Extension
             'date' => array(
                 'label' => 'setting_type.date',
                 'enable' => true
+            ),
+            'url' => array(
+                'label' => 'setting_type.url',
+                'enable' => true
+            ),
+            'phone' => array(
+                'label' => 'setting_type.phone',
+                'enable' => true
             )
         ), $config['types']);
 

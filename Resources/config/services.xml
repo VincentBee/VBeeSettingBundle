@@ -9,9 +9,12 @@
         <parameter key="vbee.form.setting.class">VBee\SettingBundle\Form\Type\SettingType</parameter>
         <parameter key="vbee.twig.setting.class">VBee\SettingBundle\Twig\SettingExtension</parameter>
         <parameter key="vbee.validator.setting_value.class">VBee\SettingBundle\Validator\Constraints\SettingValueValidator</parameter>
-        <parameter key="vbee.validator.string.class">VBee\SettingBundle\Validator\Constraints\StringValidator</parameter>
-        <parameter key="vbee.validator.integer.class">VBee\SettingBundle\Validator\Constraints\IntegerValidator</parameter>
-        <parameter key="vbee.validator.date.class">VBee\SettingBundle\Validator\Constraints\DateValidator</parameter>
+
+        <parameter key="vbee.validator.string.class">VBee\SettingBundle\Validator\Setting\StringValidator</parameter>
+        <parameter key="vbee.validator.integer.class">VBee\SettingBundle\Validator\Setting\IntegerValidator</parameter>
+        <parameter key="vbee.validator.date.class">VBee\SettingBundle\Validator\Setting\DateValidator</parameter>
+        <parameter key="vbee.validator.url.class">VBee\SettingBundle\Validator\Setting\UrlValidator</parameter>
+        <parameter key="vbee.validator.phone.class">VBee\SettingBundle\Validator\Setting\PhoneValidator</parameter>
     </parameters>
 
     <services>
@@ -39,6 +42,14 @@
         </service>
 
         <service id="vbee.validator.date" class="%vbee.validator.date.class%">
+            <tag name="vbee.setting_value_validator"/>
+        </service>
+
+        <service id="vbee.validator.url" class="%vbee.validator.url.class%">
+            <tag name="vbee.setting_value_validator"/>
+        </service>
+
+        <service id="vbee.validator.phone" class="%vbee.validator.phone.class%">
             <tag name="vbee.setting_value_validator"/>
         </service>
 

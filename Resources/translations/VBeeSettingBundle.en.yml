@@ -14,3 +14,5 @@ setting_type:
   string: "String"
   integer: "Integer"
   date: "Date"
+  url: "Url"
+  phone: "Phone"
