@@ -1,7 +1,10 @@
 setting_list:
   title: "List of Settings"
   create_setting: "Create"
-  create_version: "Upgrade"
+  name: "Name"
+  description: "Description"
+  value: "Value"
+  actions: "Actions"
   edit: "Edit"
   delete: "Delete"
 setting_form:

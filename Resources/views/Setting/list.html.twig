@@ -13,28 +13,30 @@
             </a>
         </p>
 
-        <table class="table table-hover">
-            <tr>
-                <th style="width: 10%;">Name</th>
-                <th style="width: 40%;">Description</th>
-                <th style="width: 37%;">Value</th>
-                <th style="width: 13%; text-align: center">Actions</th>
-            </tr>
-            {% for setting in settings %}
+        <div class="table-responsive">
+            <table class="table table-hover">
                 <tr>
-                    <td style="width: 10%;">{{ setting.name }}</td>
-                    <td style="width: 40%;">{{ setting.description|nl2br }}</td>
-                    <td style="width: 30%;">{{ setting.value }}</td>
-                    <td style="width: 20%; text-align: right">
-                        <a class="btn btn-primary btn-small" href="{{ path('vbee_setting_setting_edit', {'id': setting.id}) }}">
-                            {{ 'setting_list.edit'|trans({}, 'VBeeSettingBundle') }}
-                        </a>
-                        <a class="btn btn-danger btn-small" href="{{ path('vbee_setting_setting_remove', {'id': setting.id}) }}">
-                            {{ 'setting_list.delete'|trans({}, 'VBeeSettingBundle') }}
-                        </a>
-                    </td>
+                    <th>{{ 'setting_list.name'|trans({}, 'VBeeSettingBundle') }}</th>
+                    <th>{{ 'setting_list.description'|trans({}, 'VBeeSettingBundle') }}</th>
+                    <th>{{ 'setting_list.value'|trans({}, 'VBeeSettingBundle') }}</th>
+                    <th>{{ 'setting_list.actions'|trans({}, 'VBeeSettingBundle') }}</th>
                 </tr>
-            {% endfor %}
-        </table>
+                {% for setting in settings %}
+                    <tr>
+                        <td class="col-md-2">{{ setting.name }}</td>
+                        <td class="col-md-5">{{ setting.description|nl2br }}</td>
+                        <td class="col-md-3"><span class="label label-primary">{{ setting.type }}</span> {{ setting.value }}</td>
+                        <td class="col-md-2">
+                            <a class="btn btn-primary btn-small" href="{{ path('vbee_setting_setting_edit', {'id': setting.id}) }}">
+                                {{ 'setting_list.edit'|trans({}, 'VBeeSettingBundle') }}
+                            </a>
+                            <a class="btn btn-danger btn-small" href="{{ path('vbee_setting_setting_remove', {'id': setting.id}) }}">
+                                {{ 'setting_list.delete'|trans({}, 'VBeeSettingBundle') }}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 {% endblock %}
