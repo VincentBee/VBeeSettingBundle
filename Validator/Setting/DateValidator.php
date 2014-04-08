@@ -7,7 +7,7 @@ use VBee\SettingBundle\Validator\Constraints\SettingValueValidatorInterface;
 class DateValidator implements SettingValueValidatorInterface
 {
     /**
-     * Check if the setting is a Date ISO 8601 "2004-02-12T15:19:21+0000"
+     * Check if the setting is a Date ISO 8601 "2004-02-12T15:19:21"
      *
      * @param $value
      * @return bool
