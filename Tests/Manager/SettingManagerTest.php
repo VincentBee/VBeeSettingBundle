@@ -2,6 +2,7 @@
 
 namespace VBee\SettingBundle\Tests\Validator\Setting;
 
+use VBee\SettingBundle\Entity\Enum\SettingTypeEnum;
 use VBee\SettingBundle\Manager\SettingManager;
 
 class SettingManagerTest extends \PHPUnit_Framework_TestCase
@@ -39,5 +40,29 @@ class SettingManagerTest extends \PHPUnit_Framework_TestCase
 
         $manager = new SettingManager($entityManager, $validator);
         $this->assertEquals(self::SETTING_VALUE, $manager->get(self::SETTING_NAME));
+    }
+
+    public function testCreate()
+    {
+        $entityManager = $this->getMockBuilder('\Doctrine\ORM\EntityManager')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $errors = $this->getMockBuilder('\Symfony\Component\Validator\ConstraintViolationList')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $validator = $this->getMockBuilder('\Symfony\Component\Validator\Validator')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $validator->expects($this->once())
+            ->method('validate')
+            ->will($this->returnValue($errors));
+
+        $manager = new SettingManager($entityManager, $validator);
+        $setting = $manager->create(self::SETTING_NAME, self::SETTING_VALUE, SettingTypeEnum::STRING);
+
+        $this->assertEquals(self::SETTING_NAME, $setting->getName());
+        $this->assertEquals(self::SETTING_VALUE, $setting->getValue());
     }
 }
