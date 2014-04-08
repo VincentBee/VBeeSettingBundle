@@ -4,6 +4,8 @@ VBeeSettingBundle
 This bundle simply allow to manage settings in your application trough the database.
 That make it easier to manage during the application running than parameters files.
 
+[![Build Status](https://travis-ci.org/VincentBee/VBeeSettingBundle.svg?branch=master)](https://travis-ci.org/VincentBee/VBeeSettingBundle)
+
 Installation
 ============
 
