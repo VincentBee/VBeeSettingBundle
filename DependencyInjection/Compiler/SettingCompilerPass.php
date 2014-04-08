@@ -10,7 +10,11 @@ class SettingCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        $settings = $container->get('doctrine')->getRepository('VBeeSettingBundle:Setting')->findAll();
+        try{
+            $settings = $container->get('doctrine')->getRepository('VBeeSettingBundle:Setting')->findAll();
+        } catch(\Exception $e){
+            $settings = array();
+        }
 
         foreach($settings as $setting){
             if($container->hasParameter($setting->getName())){
