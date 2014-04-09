@@ -1,6 +1,7 @@
 {
     "name" : "vbee/settingbundle",
     "description" : "A simple setting bundle for Symfony2",
+    "homepage": "https://github.com/VincentBee/VBeeSettingBundle",
     "type" : "symfony-bundle",
     "authors" : [{
         "name" : "VBee",
@@ -17,10 +18,18 @@
         "symfony/validator": "~2.4",
         "doctrine/orm": "~2.2,>=2.2.3"
     },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
     "autoload" : {
         "psr-0" : {
             "VBee\\SettingBundle" : ""
         }
     },
-    "target-dir" : "VBee/SettingBundle"
+    "target-dir" : "VBee/SettingBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
 }
