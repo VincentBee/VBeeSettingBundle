@@ -108,6 +108,9 @@ Type | In DB | In Code
 --- | --- | ---
 String | str | `VBee\SettingBundle\Entity\Enum\SettingTypeEnum::STRING`
 Integer | int | `VBee\SettingBundle\Entity\Enum\SettingTypeEnum::INTEGER`
+Date | date | `VBee\SettingBundle\Entity\Enum\SettingTypeEnum::DATE`
+Phone | phone | `VBee\SettingBundle\Entity\Enum\SettingTypeEnum::PHONE`
+Url | url | `VBee\SettingBundle\Entity\Enum\SettingTypeEnum::URL`
 
 Add a Type
 ==========
