@@ -17,6 +17,11 @@ Update your vendors:
 
     php composer.phar update vbee/settingbundle
 
+Update your configuration file: app/config/config.yml
+
+    v_bee_setting:
+        orm: doctrine # possible values = doctrine, propel and mongo
+
 app/AppKernel.php:
 
     new VBee\SettingBundle\VBeeSettingBundle(),

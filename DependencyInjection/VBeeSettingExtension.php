@@ -60,5 +60,8 @@ class VBeeSettingExtension extends Extension
         }
         $container->setParameter('vbee.setting_types_select', $typesForm);
         $container->setParameter('vbee.setting_types_valid', $typesValid);
+
+        // set into the manager
+        $container->setParameter('vbee.setting_manager_orm', $config['orm']);
     }
 }

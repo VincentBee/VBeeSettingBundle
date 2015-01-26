@@ -22,6 +22,10 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->enumNode('orm')
+                    ->isRequired()
+                    ->values(array('doctrine', 'propel', 'mongo'))
+                ->end()
                 ->arrayNode('types')
                     ->prototype('array')
                         ->children()
