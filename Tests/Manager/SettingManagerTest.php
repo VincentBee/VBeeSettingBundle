@@ -34,7 +34,7 @@ class SettingManagerTest extends \PHPUnit_Framework_TestCase
             ->method('getRepository')
             ->will($this->returnValue($settingRepository));
 
-        $validator = $this->getMockBuilder('\Symfony\Component\Validator\Validator')
+        $validator = $this->getMockBuilder('\Symfony\Component\Validator\Validator\RecursiveValidator')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -52,7 +52,7 @@ class SettingManagerTest extends \PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $validator = $this->getMockBuilder('\Symfony\Component\Validator\Validator')
+        $validator = $this->getMockBuilder('\Symfony\Component\Validator\Validator\RecursiveValidator')
             ->disableOriginalConstructor()
             ->getMock();
         $validator->expects($this->once())
