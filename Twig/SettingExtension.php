@@ -2,20 +2,19 @@
 
 namespace VBee\SettingBundle\Twig;
 
-use VBee\SettingBundle\Entity\Setting;
-use VBee\SettingBundle\Manager\SettingManager;
+use VBee\SettingBundle\Manager\SettingManagerInterface;
 
 class SettingExtension extends \Twig_Extension
 {
     /**
-     * @var SettingManager
+     * @var SettingManagerInterface
      */
     protected $manager;
 
     /**
-     * @param SettingManager $manager
+     * @param SettingManagerInterface $manager
      */
-    public function __construct(SettingManager $manager)
+    public function __construct(SettingManagerInterface $manager)
     {
         $this->manager = $manager;
     }

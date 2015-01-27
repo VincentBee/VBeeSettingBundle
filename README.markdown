@@ -17,6 +17,11 @@ Update your vendors:
 
     php composer.phar update vbee/settingbundle
 
+Update your configuration file: app/config/config.yml
+
+    v_bee_setting:
+        orm: doctrine # possible values = doctrine and mongodb
+
 app/AppKernel.php:
 
     new VBee\SettingBundle\VBeeSettingBundle(),
@@ -106,8 +111,11 @@ By Default, these types are available:
 
 Type | In DB | In Code
 --- | --- | ---
-String | str | `VBee\SettingBundle\Entity\Enum\SettingTypeEnum::STRING`
-Integer | int | `VBee\SettingBundle\Entity\Enum\SettingTypeEnum::INTEGER`
+String | str | `VBee\SettingBundle\Enum\SettingTypeEnum::STRING`
+Integer | int | `VBee\SettingBundle\Enum\SettingTypeEnum::INTEGER`
+Date | date | `VBee\SettingBundle\Enum\SettingTypeEnum::DATE`
+Phone | phone | `VBee\SettingBundle\Enum\SettingTypeEnum::PHONE`
+Url | url | `VBee\SettingBundle\Enum\SettingTypeEnum::URL`
 
 Add a Type
 ==========

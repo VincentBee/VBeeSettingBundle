@@ -1,6 +1,6 @@
 <?php
 
-namespace VBee\SettingBundle\Entity\Enum;
+namespace VBee\SettingBundle\Enum;
 
 class SettingTypeEnum
 {

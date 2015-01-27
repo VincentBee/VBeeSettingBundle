@@ -5,7 +5,6 @@ namespace VBee\SettingBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use VBee\SettingBundle\Entity\Enum\SettingTypeEnum;
 
 class SettingType extends AbstractType {
 
@@ -49,7 +48,7 @@ class SettingType extends AbstractType {
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'VBee\SettingBundle\Entity\Setting',
+            'data_class' => 'VBee\SettingBundle\Model\Setting',
         ));
     }
 

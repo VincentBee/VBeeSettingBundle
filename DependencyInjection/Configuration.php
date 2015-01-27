@@ -22,6 +22,16 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->enumNode('orm')
+                    ->isRequired()
+                    ->values(array('doctrine', 'mongodb'))
+                ->end()
+                ->scalarNode('setting_doctrine_manager')
+                    ->defaultValue('VBee\SettingBundle\Manager\SettingDoctrineManager')
+                ->end()
+                ->scalarNode('setting_mongodb_manager')
+                    ->defaultValue('VBee\SettingBundle\Manager\SettingMongoDbManager')
+                ->end()
                 ->arrayNode('types')
                     ->prototype('array')
                         ->children()

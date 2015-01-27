@@ -1,12 +1,12 @@
 <?php
 
-namespace VBee\SettingBundle\Entity;
+namespace VBee\SettingBundle\Document;
 
-use Doctrine\ORM\Mapping as ORM;
 use VBee\SettingBundle\Model\Setting as BaseSetting;
 
 /**
- * Setting
+ * Class Setting
+ * @package VBee\SettingBundle\Document
  */
 class Setting extends BaseSetting
 {
