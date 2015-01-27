@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use VBee\SettingBundle\Entity\Enum\SettingTypeEnum;
+use VBee\SettingBundle\Enum\SettingTypeEnum;
 use VBee\SettingBundle\Entity\Setting;
 
 class CreateSettingCommand extends ContainerAwareCommand

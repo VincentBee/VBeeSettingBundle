@@ -4,10 +4,8 @@ namespace VBee\SettingBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
-use VBee\SettingBundle\Entity\Enum\SettingTypeEnum;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -61,7 +59,15 @@ class VBeeSettingExtension extends Extension
         $container->setParameter('vbee.setting_types_select', $typesForm);
         $container->setParameter('vbee.setting_types_valid', $typesValid);
 
-        // set into the manager
-        $container->setParameter('vbee.setting_manager_orm', $config['orm']);
+        switch($config['orm']) {
+            case 'doctrine':
+                $container->setParameter('vbee.setting_setting_manager', $config['setting_doctrine_manager']);
+                $loader->load('manager.doctrine.xml');
+                break;
+            case 'mongodb':
+                $container->setParameter('vbee.setting_setting_manager', $config['setting_mongodb_manager']);
+                $loader->load('manager.mongodb.xml');
+                break;
+        }
     }
 }

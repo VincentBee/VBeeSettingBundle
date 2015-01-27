@@ -4,7 +4,7 @@ namespace VBee\SettingBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use VBee\SettingBundle\Entity\Setting;
+use VBee\SettingBundle\Model\Setting;
 
 class SettingController extends Controller
 {
@@ -25,9 +25,8 @@ class SettingController extends Controller
         if($request->getMethod() === 'POST'){
             $form->handleRequest($request);
             if($form->isValid()){
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($setting);
-                $em->flush();
+                $this->get('vbee.manager.setting')->createSetting($setting);
+
                 return $this->redirect($this->generateUrl('vbee_setting_setting_list'));
             }
         }
@@ -40,14 +39,15 @@ class SettingController extends Controller
 
     public function editAction(Request $request, $id)
     {
-        $setting = $this->getDoctrine()->getRepository('VBeeSettingBundle:Setting')->find($id);
+        $setting = $this->get('vbee.manager.setting')->getSettingById($id);
         $formType = $this->get('vbee.form.setting');
         $form = $this->createForm($formType, $setting);
 
         if($request->getMethod() === 'POST'){
             $form->handleRequest($request);
             if($form->isValid()){
-                $this->getDoctrine()->getManager()->flush();
+                $this->get('vbee.manager.setting')->updateSetting($setting);
+
                 return $this->redirect($this->generateUrl('vbee_setting_setting_list'));
             }
         }
@@ -60,11 +60,9 @@ class SettingController extends Controller
 
     public function removeAction(Request $request, $id)
     {
-        $setting = $this->getDoctrine()->getRepository('VBeeSettingBundle:Setting')->find($id);
+        $setting = $this->get('vbee.manager.setting')->getSettingById($id);
         if($setting instanceof Setting){
-            $this->get('vbee.manager.setting')->remove(
-                $setting->getName()
-            );
+            $this->get('vbee.manager.setting')->removeSetting($setting);
         }
         return $this->redirect($this->generateUrl('vbee_setting_setting_list'));
     }

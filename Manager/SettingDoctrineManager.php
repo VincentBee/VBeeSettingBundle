@@ -4,10 +4,11 @@ namespace VBee\SettingBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Validator\Validator;
-use VBee\SettingBundle\Entity\Enum\SettingTypeEnum;
+use VBee\SettingBundle\Enum\SettingTypeEnum;
 use VBee\SettingBundle\Entity\Setting;
+use VBee\SettingBundle\Model\Setting as SettingData;
 
-class SettingManager
+class SettingDoctrineManager implements SettingManagerInterface
 {
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -86,17 +87,19 @@ class SettingManager
 
     /**
      * @param $name
-     * @param $type
      * @param string $value
-     * @return Setting
+     * @param string $type
+     * @param string $description
      * @throws \Exception
+     * @return Setting
      */
-    public function create($name, $value = '', $type = SettingTypeEnum::STRING)
+    public function create($name, $value = '', $type = SettingTypeEnum::STRING, $description = null)
     {
         $setting = new Setting();
         $setting->setName($name);
         $setting->setType($type);
         $setting->setValue($value);
+        $setting->setDescription($description);
 
         $errors = $this->validator->validate($setting);
         if($errors->count() > 0){
@@ -136,6 +139,57 @@ class SettingManager
         foreach($settings as $setting){
             $this->em->remove($setting);
         }
+        $this->em->flush();
+    }
+
+    public function getSettingById($id)
+    {
+        return $this->repository->find($id);
+    }
+
+    public function createSetting(SettingData $settingData) {
+        $setting = new Setting();
+        $setting->setName($settingData->getName());
+        $setting->setType($settingData->getType());
+        $setting->setValue($settingData->getValue());
+        $setting->setDescription($settingData->getDescription());
+
+        $errors = $this->validator->validate($setting);
+        if($errors->count() > 0){
+            throw new \Exception('Invalid Setting, check at constraints validation');
+        }
+
+        $this->em->persist($setting);
+        $this->em->flush();
+
+        return $setting;
+    }
+
+    public function updateSetting(SettingData $settingData) {
+        $setting = $this->repository->find($settingData->getId());
+        if($setting instanceof Setting){
+            $setting->setName($settingData->getName());
+            $setting->setType($settingData->getType());
+            $setting->setValue($settingData->getValue());
+            $setting->setDescription($settingData->getDescription());
+
+            $errors = $this->validator->validate($setting);
+            if($errors->count() > 0){
+                throw new \Exception('Invalid Setting, check at constraints validation');
+            }
+
+            $this->em->flush();
+        }
+    }
+
+    public function removeSetting(SettingData $settingData) {
+        $setting = $this->repository->find($settingData->getId());
+
+        if($setting === null){
+            throw new \Exception('Unable to find this Setting');
+        }
+
+        $this->em->remove($setting);
         $this->em->flush();
     }
 }
