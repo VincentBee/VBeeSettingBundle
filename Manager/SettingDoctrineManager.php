@@ -3,7 +3,7 @@
 namespace VBee\SettingBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\Validator\Validator;
+use Symfony\Component\Validator\Validator\RecursiveValidator as Validator;
 use VBee\SettingBundle\Enum\SettingTypeEnum;
 use VBee\SettingBundle\Entity\Setting;
 use VBee\SettingBundle\Model\Setting as SettingData;
