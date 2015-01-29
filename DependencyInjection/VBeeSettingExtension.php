@@ -61,10 +61,12 @@ class VBeeSettingExtension extends Extension
 
         switch($config['orm']) {
             case 'doctrine':
+                $container->setParameter('vbee.setting_entity.class', 'VBee\SettingBundle\Entity\Setting');
                 $container->setParameter('vbee.setting_setting_manager', $config['setting_doctrine_manager']);
                 $loader->load('manager.doctrine.xml');
                 break;
             case 'mongodb':
+                $container->setParameter('vbee.setting_entity.class', 'VBee\SettingBundle\Document\Setting');
                 $container->setParameter('vbee.setting_setting_manager', $config['setting_mongodb_manager']);
                 $loader->load('manager.mongodb.xml');
                 break;

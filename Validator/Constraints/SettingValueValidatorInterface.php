@@ -4,7 +4,7 @@ namespace VBee\SettingBundle\Validator\Constraints;
 
 /**
  * Interface SettingValueValidatorInterface
- * @package VBee\SettingBundle\Entity\Validator
+ * @package VBee\SettingBundle\Validator\Constraints
  */
 interface SettingValueValidatorInterface
 {

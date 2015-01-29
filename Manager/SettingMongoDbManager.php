@@ -3,7 +3,7 @@
 namespace VBee\SettingBundle\Manager;
 
 use Doctrine\Bundle\MongoDBBundle\ManagerRegistry;
-use Symfony\Component\Validator\Validator;
+use Symfony\Component\Validator\Validator\RecursiveValidator as Validator;
 use VBee\SettingBundle\Enum\SettingTypeEnum;
 use VBee\SettingBundle\Document\Setting;
 use VBee\SettingBundle\Model\Setting as SettingData;

@@ -22,6 +22,7 @@
 
         <service id="vbee.form.setting" class="%vbee.form.setting.class%">
             <argument>%vbee.setting_types_select%</argument>
+            <argument>%vbee.setting_entity.class%</argument>
         </service>
 
         <service id="vbee.twig.setting" class="%vbee.twig.setting.class%">

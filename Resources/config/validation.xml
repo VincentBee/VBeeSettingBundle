@@ -18,4 +18,18 @@
         </property>
     </class>
 
+    <class name="VBee\SettingBundle\Document\Setting">
+
+        <constraint name="Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique">
+            <option name="fields">name</option>
+            <option name="message">setting.name_unique</option>
+        </constraint>
+
+        <constraint name="VBee\SettingBundle\Validator\SettingValue" />
+
+        <property name="name">
+            <constraint name="NotNull" />
+        </property>
+    </class>
+
 </constraint-mapping>

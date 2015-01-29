@@ -25,7 +25,7 @@ class SettingController extends Controller
         if($request->getMethod() === 'POST'){
             $form->handleRequest($request);
             if($form->isValid()){
-                $this->get('vbee.manager.setting')->createSetting($setting);
+                $this->get('vbee.manager.setting')->createSetting($form->getData());
 
                 return $this->redirect($this->generateUrl('vbee_setting_setting_list'));
             }

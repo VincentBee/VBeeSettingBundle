@@ -4,7 +4,7 @@ namespace VBee\SettingBundle\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
-use VBee\SettingBundle\Entity\Setting;
+use VBee\SettingBundle\Model\Setting;
 
 class SettingValueValidator extends ConstraintValidator
 {

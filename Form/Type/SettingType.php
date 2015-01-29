@@ -5,14 +5,19 @@ namespace VBee\SettingBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use VBee\SettingBundle\Form\DataTransformer\SettingDoctrineDataTransformer;
+use VBee\SettingBundle\Form\DataTransformer\SettingMongoDbDataTransformer;
 
 class SettingType extends AbstractType {
 
     protected $types;
 
-    public function __construct(array $types)
+    protected $class;
+
+    public function __construct(array $types, $class)
     {
         $this->types = $types;
+        $this->class = $class;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
@@ -43,12 +48,18 @@ class SettingType extends AbstractType {
                 ))
             )
         ;
+
+        if('VBee\SettingBundle\Entity\Setting' == $this->class) {
+            $builder->addModelTransformer(new SettingDoctrineDataTransformer());
+        } else if ('VBee\SettingBundle\Document\Setting' == $this->class) {
+            $builder->addModelTransformer(new SettingMongoDbDataTransformer());
+        }
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'VBee\SettingBundle\Model\Setting',
+            'data_class' => $this->class,
         ));
     }
 
