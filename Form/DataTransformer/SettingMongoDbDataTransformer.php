@@ -10,8 +10,22 @@ class SettingMongoDbDataTransformer implements DataTransformerInterface {
 
     public function transform($value)
     {
+        return $this->getTransform($value);
+    }
+
+    public function reverseTransform($value)
+    {
+        return $this->getTransform($value);
+    }
+
+    private function getTransform($value)
+    {
+        if($value instanceof MongoDbSetting){
+            return $value;
+        }
         if($value instanceof Setting){
             $transformedValue = new MongoDbSetting();
+            $transformedValue->setId($value->getId());
             $transformedValue->setName($value->getName());
             $transformedValue->setDescription($value->getDescription());
             $transformedValue->setType($value->getType());
@@ -21,10 +35,5 @@ class SettingMongoDbDataTransformer implements DataTransformerInterface {
         }
 
         return null;
-    }
-
-    public function reverseTransform($value)
-    {
-        return $value;
     }
 }

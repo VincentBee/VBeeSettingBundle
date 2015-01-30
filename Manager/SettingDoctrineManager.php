@@ -168,6 +168,7 @@ class SettingDoctrineManager implements SettingManagerInterface
     public function updateSetting(SettingData $settingData) {
         $setting = $this->repository->find($settingData->getId());
         if($setting instanceof Setting){
+            $setting->setId($settingData->getId());
             $setting->setName($settingData->getName());
             $setting->setType($settingData->getType());
             $setting->setValue($settingData->getValue());

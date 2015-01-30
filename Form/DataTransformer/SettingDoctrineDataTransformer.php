@@ -10,8 +10,22 @@ class SettingDoctrineDataTransformer implements DataTransformerInterface {
 
     public function transform($value)
     {
+        return $this->getTransform($value);
+    }
+
+    public function reverseTransform($value)
+    {
+        return $this->getTransform($value);
+    }
+
+    private function getTransform($value)
+    {
+        if($value instanceof DoctrineSetting){
+            return $value;
+        }
         if($value instanceof Setting){
             $transformedValue = new DoctrineSetting();
+            $transformedValue->setId($value->getId());
             $transformedValue->setName($value->getName());
             $transformedValue->setDescription($value->getDescription());
             $transformedValue->setType($value->getType());
@@ -21,10 +35,5 @@ class SettingDoctrineDataTransformer implements DataTransformerInterface {
         }
 
         return null;
-    }
-
-    public function reverseTransform($value)
-    {
-        return $value;
     }
 }
