@@ -33,6 +33,19 @@ class Setting
     protected $value;
 
     /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Setting
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
      * Get id
      *
      * @return integer 
