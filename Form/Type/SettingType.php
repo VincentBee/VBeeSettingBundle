@@ -29,7 +29,7 @@ class SettingType extends AbstractType {
                     'placeholder' => 'setting_form.name',
                 ))
             )
-            ->add('description', null, array(
+            ->add('description', 'textarea', array(
                 'required' => false,
                 'translation_domain' => 'VBeeSettingBundle',
                 'attr' => array(
