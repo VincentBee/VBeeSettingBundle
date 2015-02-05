@@ -14,13 +14,10 @@ class SettingValueValidatorCompilerPass implements CompilerPassInterface
             return;
         }
 
-        $definition = $container->getDefinition(
-            'vbee.validator.setting_value'
-        );
+        $definition = $container->getDefinition('vbee.validator.setting_value');
 
-        $taggedServices = $container->findTaggedServiceIds(
-            'vbee.setting_value_validator'
-        );
+        $taggedServices = $container->findTaggedServiceIds('vbee.setting_value_validator');
+
         foreach ($taggedServices as $id => $attributes) {
             $definition->addMethodCall(
                 'addValidator',

@@ -25,11 +25,11 @@ class RemoveSettingCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if($input->getOption(self::REMOVE_SETTING_ALL_OPTION)){
+        if ($input->getOption(self::REMOVE_SETTING_ALL_OPTION)) {
             $this->getContainer()->get('vbee.manager.setting')->purge();
         } else {
             $name = $input->getArgument(self::REMOVE_SETTING_NAME_ARG);
-            if($name != null){
+            if ($name != null) {
                 $this->getContainer()->get('vbee.manager.setting')->remove(
                     $name
                 );

@@ -16,10 +16,11 @@ class SettingCompilerPass implements CompilerPassInterface
             $settings = array();
         }
 
-        foreach($settings as $setting){
-            if($container->hasParameter($setting->getName())){
+        foreach ($settings as $setting) {
+            if ($container->hasParameter($setting->getName())) {
                 continue;
             }
+
             $container->setParameter(
                 $setting->getName(),
                 $setting->getValue()

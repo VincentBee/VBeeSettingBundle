@@ -20,10 +20,10 @@ class SettingDoctrineDataTransformer implements DataTransformerInterface {
 
     private function getTransform($value)
     {
-        if($value instanceof DoctrineSetting){
+        if ($value instanceof DoctrineSetting) {
             return $value;
         }
-        if($value instanceof Setting){
+        if ($value instanceof Setting) {
             $transformedValue = new DoctrineSetting();
             $transformedValue->setId($value->getId());
             $transformedValue->setName($value->getName());

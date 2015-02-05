@@ -2,6 +2,10 @@
 
 namespace VBee\SettingBundle\Enum;
 
+/**
+ * Class SettingTypeEnum
+ * @package VBee\SettingBundle\Enum
+ */
 class SettingTypeEnum
 {
     const STRING        = 'str';

@@ -20,10 +20,10 @@ class SettingMongoDbDataTransformer implements DataTransformerInterface {
 
     private function getTransform($value)
     {
-        if($value instanceof MongoDbSetting){
+        if ($value instanceof MongoDbSetting) {
             return $value;
         }
-        if($value instanceof Setting){
+        if ($value instanceof Setting) {
             $transformedValue = new MongoDbSetting();
             $transformedValue->setId($value->getId());
             $transformedValue->setName($value->getName());
