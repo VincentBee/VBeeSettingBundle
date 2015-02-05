@@ -4,11 +4,14 @@ namespace VBee\SettingBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use VBee\SettingBundle\Entity\Setting;
+use VBee\SettingBundle\Model\Repository\SettingRepositoryInterface;
 
 /**
- * SettingRepository
+ * Class SettingRepository
+ * @package VBee\SettingBundle\Entity\Repository
  */
-class SettingRepository extends EntityRepository
+class SettingRepository extends EntityRepository implements
+    SettingRepositoryInterface
 {
     public function getSettingByName($name)
     {
