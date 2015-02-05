@@ -49,8 +49,27 @@ interface SettingManagerInterface
      */
     public function purge();
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getSettingById($id);
+
+    /**
+     * @param Setting $setting
+     * @return mixed
+     */
     public function createSetting(Setting $setting);
+
+    /**
+     * @param Setting $setting
+     * @return mixed
+     */
     public function updateSetting(Setting $setting);
+
+    /**
+     * @param Setting $setting
+     * @return mixed
+     */
     public function removeSetting(Setting $setting);
 }

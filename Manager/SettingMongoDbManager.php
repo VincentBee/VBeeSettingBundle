@@ -147,7 +147,8 @@ class SettingMongoDbManager implements SettingManagerInterface
         return $this->repository->find($id);
     }
 
-    public function createSetting(SettingData $settingData) {
+    public function createSetting(SettingData $settingData)
+    {
         $setting = new Setting();
         $setting->setName($settingData->getName());
         $setting->setType($settingData->getType());
@@ -165,16 +166,17 @@ class SettingMongoDbManager implements SettingManagerInterface
         return $setting;
     }
 
-    public function updateSetting(SettingData $settingData) {
+    public function updateSetting(SettingData $settingData)
+    {
         $setting = $this->repository->find($settingData->getId());
-        if($setting instanceof Setting){
+        if ($setting instanceof Setting) {
             $setting->setName($settingData->getName());
             $setting->setType($settingData->getType());
             $setting->setValue($settingData->getValue());
             $setting->setDescription($settingData->getDescription());
 
             $errors = $this->validator->validate($setting);
-            if($errors->count() > 0){
+            if ($errors->count() > 0) {
                 throw new \Exception('Invalid Setting, check at constraints validation');
             }
 
@@ -182,10 +184,11 @@ class SettingMongoDbManager implements SettingManagerInterface
         }
     }
 
-    public function removeSetting(SettingData $settingData) {
+    public function removeSetting(SettingData $settingData)
+    {
         $setting = $this->repository->find($settingData->getId());
 
-        if($setting === null){
+        if (null === $setting) {
             throw new \Exception('Unable to find this Setting');
         }
 

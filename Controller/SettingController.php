@@ -22,9 +22,10 @@ class SettingController extends Controller
         $formType = $this->get('vbee.form.setting');
         $form = $this->createForm($formType, $setting);
 
-        if($request->getMethod() === 'POST'){
+        if ('POST' === $request->getMethod()) {
             $form->handleRequest($request);
-            if($form->isValid()){
+
+            if ($form->isValid()) {
                 $this->get('vbee.manager.setting')->createSetting($form->getData());
 
                 return $this->redirect($this->generateUrl('vbee_setting_setting_list'));
@@ -43,9 +44,9 @@ class SettingController extends Controller
         $formType = $this->get('vbee.form.setting');
         $form = $this->createForm($formType, $setting);
 
-        if($request->getMethod() === 'POST'){
+        if ('POST' === $request->getMethod()) {
             $form->handleRequest($request);
-            if($form->isValid()){
+            if ($form->isValid()) {
                 $this->get('vbee.manager.setting')->updateSetting($setting);
 
                 return $this->redirect($this->generateUrl('vbee_setting_setting_list'));
@@ -61,7 +62,7 @@ class SettingController extends Controller
     public function removeAction(Request $request, $id)
     {
         $setting = $this->get('vbee.manager.setting')->getSettingById($id);
-        if($setting instanceof Setting){
+        if( $setting instanceof Setting ){
             $this->get('vbee.manager.setting')->removeSetting($setting);
         }
         return $this->redirect($this->generateUrl('vbee_setting_setting_list'));

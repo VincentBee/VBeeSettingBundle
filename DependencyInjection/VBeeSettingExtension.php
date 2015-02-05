@@ -50,8 +50,8 @@ class VBeeSettingExtension extends Extension
 
         $typesForm = array();
         $typesValid = array();
-        foreach($types as $name => $type){
-            if($type['enable']){
+        foreach ($types as $name => $type) {
+            if (true === $type['enable']) {
                 $typesForm[$name] = $type['label'];
                 $typesValid[] = $name;
             }
@@ -59,7 +59,7 @@ class VBeeSettingExtension extends Extension
         $container->setParameter('vbee.setting_types_select', $typesForm);
         $container->setParameter('vbee.setting_types_valid', $typesValid);
 
-        switch($config['orm']) {
+        switch ($config['orm']) {
             case 'doctrine':
                 $container->setParameter('vbee.setting_entity.class', 'VBee\SettingBundle\Entity\Setting');
                 $container->setParameter('vbee.setting_setting_manager', $config['setting_doctrine_manager']);

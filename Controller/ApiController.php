@@ -11,7 +11,7 @@ class ApiController extends Controller
     public function getAction(Request $request)
     {
         $settings = array();
-        foreach($this->get('vbee.manager.setting')->all() as $setting){
+        foreach ($this->get('vbee.manager.setting')->all() as $setting) {
             $settings[$setting->getName()] = $setting->getValue();
         }
 
